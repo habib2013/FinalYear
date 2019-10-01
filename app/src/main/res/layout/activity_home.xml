@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+
+    <include
+        layout="@layout/app_bar_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/background_line">
+
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/ic_action_back"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00000000"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark"
+                android:orientation="vertical"
+                android:paddingLeft="40dp">
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingLeft="30dp"
+                    android:background="@color/colorbg">
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/nav_header1_height"
+                        android:background="@color/colorbg"
+                        android:orientation="vertical"
+                        android:gravity="bottom"
+                        android:paddingBottom="35dp"
+                        >
+
+                        <TextView
+                            android:id="@+id/title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="bten"
+                            android:textSize="40dp"
+                            android:paddingLeft="16dp"
+                            android:paddingTop="20dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/colortext"
+                            android:letterSpacing="0.025"/>
+                        <TextView
+                            android:id="@+id/checker"
+                            android:text="student"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colortext"
+                            android:letterSpacing="0.025"/>
+
+
+
+                        <View
+                            android:visibility="gone"
+                            android:layout_marginLeft="20dp"
+                            android:paddingTop="30dp"
+                            android:layout_width="40dp"
+                            android:layout_height="3dp"
+                            android:background="@color/colortext"></View>
+
+
+
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/home"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Home"
+                        android:textColor="@color/colortext"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:paddingTop="12dp"
+                        android:textStyle="bold"
+                        android:paddingBottom="12dp"
+                        android:letterSpacing="0.025"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:textStyle="bold"
+                            android:id="@+id/messages"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="16dp"
+                            android:paddingRight="16dp"
+                            android:paddingTop="12dp"
+                            android:paddingBottom="12dp"
+
+                            android:text="Messages"
+                            android:textColor="@color/colortext"
+                            android:letterSpacing="0.025"/>
+
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:id="@+id/friends"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp"
+                        android:text="Friends"
+                        android:textColor="@color/colortext"
+                        android:letterSpacing="0.025"/>
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:id="@+id/favourites"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp"
+                        android:text="Favourites"
+                        android:textColor="@color/colortext"
+                        android:letterSpacing="0.025"/>
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:id="@+id/shop"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp"
+                        android:text="Hop"
+                        android:textColor="@color/colortext"
+                        android:letterSpacing="0.025"/>
+
+
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:id="@+id/logout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp"
+                        android:text="Logout"
+                        android:textColor="@color/colortext"
+                        android:letterSpacing="0.025"/>
+
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </FrameLayout>
+    </com.google.android.material.navigation.NavigationView>
+
+</androidx.drawerlayout.widget.DrawerLayout>
