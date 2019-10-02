@@ -2,6 +2,7 @@ package com.example.finalyear;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +24,16 @@ public class AddUserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_user);
+
+
+        final String PREFS_NAME = "myPrefsFile" +
+                "";
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME,0);
+        if (settings.getBoolean("my_first_time",true)){
+            tapview();
+            settings.edit().putBoolean("my_first_time",false).commit();
+
+        }
 
 ImageView back  = (ImageView) findViewById(R.id.back);
 back.setOnClickListener(new View.OnClickListener() {

@@ -1,4 +1,4 @@
-package com.example.finalyear;
+package com.example.finalyear.model;
 
 
 //this is very simple class and it only contains the user attributes, a constructor and the getters

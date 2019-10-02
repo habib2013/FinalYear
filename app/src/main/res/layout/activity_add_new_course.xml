@@ -87,7 +87,7 @@
 
 
             <custom_font.MyEditText
-                android:id="@+id/editTextUsername"
+                android:id="@+id/editCoursename"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="42dp"
@@ -109,12 +109,12 @@
 
 
             <custom_font.MyEditText
-                android:id="@+id/editTextEmail"
+                android:id="@+id/editCoursecode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:background="#00000000"
-                android:hint="Course name"
+                android:hint="Course unit"
                 android:inputType="text"
                 android:textColorHint="#a9b0c3"
                 android:textSize="13dp"
@@ -130,13 +130,13 @@
                 android:background="#a9b0c3" />
 
             <custom_font.MyEditText
-                android:id="@+id/editTextPassword"
+                android:id="@+id/editCoursestatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:background="#00000000"
                 android:hint="Course status"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:textColorHint="#a9b0c3"
                 android:textSize="13dp"
 
@@ -168,14 +168,38 @@
                     android:textStyle="bold" />
 
                 <Spinner
-                    android:paddingTop="5dp"
-                    android:id="@+id/spinnerTeamAffiliation"
-                    android:layout_width="match_parent"
+                    android:id="@+id/department"
+                    android:layout_width="299dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
-                    android:entries="@array/teams" />
+                    android:entries="@array/teams"
+                    android:paddingTop="5dp" />
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="378dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="30dp">
+
+                <custom_font.MyTextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:text="Level: "
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/levels"
+                    android:layout_width="292dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:entries="@array/teams"
+                    android:paddingTop="5dp" />
+            </LinearLayout>
+
+
             <LinearLayout
                 android:paddingTop="30dp"
                 android:layout_width="wrap_content"
@@ -186,14 +210,11 @@
                     android:textStyle="bold"
                     />
 
-                <ListView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"></ListView>
             </LinearLayout>
 
 
-            <custom_font.MyTextView
-                android:id="@+id/signup"
+            <Button
+                android:id="@+id/addcourse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"

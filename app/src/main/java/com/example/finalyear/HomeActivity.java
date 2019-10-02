@@ -5,12 +5,12 @@ import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 
+import com.example.finalyear.model.User;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
-import android.util.Log;
 import android.view.View;
 
 import androidx.core.content.res.ResourcesCompat;
@@ -29,7 +29,6 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,7 +51,7 @@ public class HomeActivity extends AppCompatActivity
         prefManager = new PrefManager(this);
    prefManager.setFirstTimeLaunch(false);
 
-final String PREFS_NAME = "myPrefsFile" +
+        final String PREFS_NAME = "myPrefsFile" +
         "";
         SharedPreferences settings = getSharedPreferences(PREFS_NAME,0);
         if (settings.getBoolean("my_first_time",true)){
@@ -60,9 +59,6 @@ final String PREFS_NAME = "myPrefsFile" +
             settings.edit().putBoolean("my_first_time",false).commit();
 
         }
-
-
-
 
 
 

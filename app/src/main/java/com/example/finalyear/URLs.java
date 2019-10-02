@@ -11,7 +11,7 @@ public class URLs {
     public static final String URL_LOGIN= ROOT_URL + "login";
 
 
-    public static final String URL_CREATE_HERO = NEW_ROOT_URL + "createhero";
+    public static final String URL_CREATE_HERO = NEW_ROOT_URL + "createCourse";
     public static final String URL_READ_HEROES = NEW_ROOT_URL + "getheroes";
     public static final String URL_UPDATE_HERO = NEW_ROOT_URL + "updatehero";
     public static final String URL_DELETE_HERO = NEW_ROOT_URL + "deletehero&id=";

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+import com.example.finalyear.model.User;
+
 /**
  * Created by Belal on 9/5/2017.
  */

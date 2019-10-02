@@ -12,6 +12,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.finalyear.model.User;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
