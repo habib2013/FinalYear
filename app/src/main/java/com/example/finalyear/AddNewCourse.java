@@ -106,7 +106,7 @@ public class AddNewCourse extends AppCompatActivity {
                 params.put("unit", code);
                 params.put("status", status);
 
-                PerformNetworkRequest request = new PerformNetworkRequest(URLs.URL_CREATE_HERO, params, CODE_POST_REQUEST);
+                PerformNetworkRequest request = new PerformNetworkRequest(URLs.URL_CREATE_COURSE, params, CODE_POST_REQUEST);
                 request.execute();
             }
         });
@@ -116,10 +116,10 @@ public class AddNewCourse extends AppCompatActivity {
 
 
 
-    private void readHeroes() {
-        PerformNetworkRequest request = new PerformNetworkRequest(URLs.URL_READ_HEROES, null, CODE_GET_REQUEST);
-        request.execute();
-    }
+//    private void readHeroes() {
+//        PerformNetworkRequest request = new PerformNetworkRequest(URLs.URL_READ_HEROES, null, CODE_GET_REQUEST);
+//        request.execute();
+//    }
 
 
 

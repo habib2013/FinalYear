@@ -85,7 +85,7 @@
 
 
             <custom_font.MyEditText
-                android:id="@+id/editTextUsername"
+                android:id="@+id/lecturerUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="42dp"
@@ -107,7 +107,7 @@
 
 
             <custom_font.MyEditText
-                android:id="@+id/editTextEmail"
+                android:id="@+id/lecturerMail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -134,12 +134,19 @@
                 android:background="#00000000"
                 android:hint="password"
                 android:inputType="text"
+                android:id="@+id/lecturerPassword"
                 android:textColorHint="#a9b0c3"
                 android:textSize="13dp"
 
                 />
 
-
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Lecturer"
+    android:visibility="gone"
+    android:id="@+id/lecturer"
+    />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -150,40 +157,11 @@
                 />
 
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="30dp">
-
-                <custom_font.MyTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Department: "
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="30dp">
-
-                <custom_font.MyTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Courses: "
-                    android:textStyle="bold" />
-
-                <ListView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"></ListView>
-            </LinearLayout>
-
-
             <custom_font.MyTextView
-                android:id="@+id/signup"
+                android:id="@+id/submitlecturer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 android:layout_alignParentStart="true"
                 android:layout_marginTop="42dp"
                 android:background="@drawable/round"
@@ -197,17 +175,12 @@
         </LinearLayout>
 
 
-
-
-
-
         <ProgressBar
-            android:visibility="gone"
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true" />
+            android:layout_centerVertical="true"
+            android:visibility="gone" />
 
 
     </RelativeLayout>
