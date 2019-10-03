@@ -186,13 +186,18 @@ if(ab.equals(checklecturer)){
 
 
 
-            shop = (TextView)findViewById(R.id.shop);
-            shop.setText("Shop");
-            shop.setTypeface(font_Semibold);
 
             favourites = (TextView)findViewById(R.id.favourites);
-            favourites.setText("Favourites");
+            favourites.setText("Attendance");
             favourites.setTypeface(font_Semibold);
+            favourites.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent it = new Intent(HomeActivity.this, Attendance.class);
+                        startActivity(it);
+                }
+            });
+
 
         }
 

@@ -15,7 +15,8 @@
         android:roundIcon="@drawable/launchtm"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddNewCourse"></activity>
+        <activity android:name=".Attendance"></activity>
+        <activity android:name=".AddNewCourse" />
         <activity android:name=".AddNewLecturer" />
         <activity android:name=".ShowShimmer" />
         <activity android:name=".AddUserActivity" />

@@ -34,6 +34,7 @@ import java.util.HashMap;
 import java.util.List;
 import com.example.finalyear.URLs;
 
+
 import custom_font.MyEditText;
 import custom_font.MyTextView;
 
@@ -43,7 +44,6 @@ public class AddNewCourse extends AppCompatActivity {
 
     private static final int CODE_GET_REQUEST = 1024;
     private static final int CODE_POST_REQUEST = 1025;
-
 
     ProgressBar progressBar;
 
@@ -58,6 +58,11 @@ public class AddNewCourse extends AppCompatActivity {
         MyEditText coursestatus = (MyEditText) findViewById(R.id.editCoursestatus);
         Spinner department = (Spinner) findViewById(R.id.department);
     Button add = (Button) findViewById(R.id.addcourse);
+
+//        heroList = new Arra
+//                List<Course> courseList  = new ArrayList<String>();
+
+
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         ImageView back = (ImageView) findViewById(R.id.back);
@@ -116,12 +121,6 @@ public class AddNewCourse extends AppCompatActivity {
 
 
 
-//    private void readHeroes() {
-//        PerformNetworkRequest request = new PerformNetworkRequest(URLs.URL_READ_HEROES, null, CODE_GET_REQUEST);
-//        request.execute();
-//    }
-
-
 
     private class PerformNetworkRequest extends AsyncTask<Void, Void, String> {
         String url;
@@ -171,6 +170,7 @@ public class AddNewCourse extends AppCompatActivity {
     }
 
 
-}
+    }
+
 
 
