@@ -15,7 +15,9 @@ public class URLs {
     public static final String URL_CREATE_USER = NEW_ROOT_URL + "createUser";
 
 
-    public static final String URL_UPDATE_HERO = NEW_ROOT_URL + "updatehero";
+    public static final String URL_READ_USER = NEW_ROOT_URL + "getUsers";
+    public static final String URL_READ_LECTURER = NEW_ROOT_URL + "getLecturers";
+
     public static final String URL_DELETE_HERO = NEW_ROOT_URL + "deletehero&id=";
 
 }
