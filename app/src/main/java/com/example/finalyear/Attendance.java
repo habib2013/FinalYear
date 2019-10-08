@@ -5,6 +5,7 @@ import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
@@ -28,7 +29,18 @@ String daters;
                 finish();
             }
         });
+
+        ImageView disableduser = (ImageView) findViewById(R.id.disableduser);
+        disableduser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it  = new Intent(Attendance.this,VerifyUser.class);
+                startActivity(it);
+            }
+        });
+
     }
+
     public void showDatePicker  (View v) {
         DialogFragment newFragment = new MyDatePickerFragment();
         newFragment.show(getSupportFragmentManager(), "date picker");

@@ -62,9 +62,9 @@
                 >
 
                 <custom_font.MyTextView
-                    android:id="@+id/signin1"
+                    android:id="@+id/listuser"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_gravity="right"
                     android:gravity="end"
                     android:text="Lists"

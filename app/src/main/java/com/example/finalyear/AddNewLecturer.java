@@ -2,6 +2,7 @@ package com.example.finalyear;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.finalyear.lists.LecturerList;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,6 +42,15 @@ public class AddNewLecturer extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+
+        MyTextView lecturerlist = (MyTextView) findViewById(R.id.lecturerlist);
+        lecturerlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it = new Intent(AddNewLecturer.this, LecturerList.class);
+                startActivity(it);
             }
         });
 

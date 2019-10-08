@@ -108,9 +108,7 @@ if(ab.equals(checklecturer)){
     friends.setTypeface(font_Semibold);
     friends.setText("Friends");
 
-    shop = (TextView)findViewById(R.id.shop);
-    shop.setTypeface(font_Semibold);
-    shop.setText("Shop");
+
 
     favourites = (TextView)findViewById(R.id.favourites);
     favourites.setTypeface(font_Semibold);
@@ -135,9 +133,7 @@ if(ab.equals(checklecturer)){
             friends.setTypeface(font_Semibold);
             friends.setText("User Friends");
 
-            shop = (TextView)findViewById(R.id.shop);
-            shop.setTypeface(font_Semibold);
-            shop.setText("Shop user");
+
 
             favourites = (TextView)findViewById(R.id.favourites);
             favourites.setTypeface(font_Semibold);
@@ -207,7 +203,7 @@ if(ab.equals(checklecturer)){
 
 
 
-TextView logout = (TextView) findViewById(R.id.logout);
+ImageView logout = (ImageView) findViewById(R.id.logot);
 logout.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {

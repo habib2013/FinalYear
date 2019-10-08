@@ -10,12 +10,16 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/launchtm"
+        android:icon="@drawable/clogo"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/launchtm"
+        android:roundIcon="@drawable/clogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Attendance"></activity>
+        <activity android:name=".VerifyUser"></activity>
+        <activity android:name=".lists.LecturerList" />
+        <activity android:name=".lists.UserList" />
+        <activity android:name=".lists.CourseList" />
+        <activity android:name=".Attendance" />
         <activity android:name=".AddNewCourse" />
         <activity android:name=".AddNewLecturer" />
         <activity android:name=".ShowShimmer" />
@@ -35,9 +39,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".SplashActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".SplashActivity" />
     </application>
 
 </manifest>

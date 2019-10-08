@@ -33,6 +33,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import com.example.finalyear.URLs;
+import com.example.finalyear.lists.CourseList;
 
 
 import custom_font.MyEditText;
@@ -62,7 +63,15 @@ public class AddNewCourse extends AppCompatActivity {
 //        heroList = new Arra
 //                List<Course> courseList  = new ArrayList<String>();
 
+        MyTextView listcourse = (MyTextView) findViewById(R.id.listcourse);
+        listcourse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it = new Intent(AddNewCourse.this, CourseList.class);
+                startActivity(it);
 
+            }
+        });
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         ImageView back = (ImageView) findViewById(R.id.back);

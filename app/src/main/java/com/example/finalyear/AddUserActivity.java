@@ -11,9 +11,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.finalyear.lists.UserList;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
 
+import custom_font.MyTextView;
 import es.dmoral.toasty.Toasty;
 
 
@@ -34,6 +36,15 @@ public class AddUserActivity extends AppCompatActivity {
             settings.edit().putBoolean("my_first_time",false).commit();
 
         }
+
+        MyTextView listuser = (MyTextView) findViewById(R.id.listuser);
+        listuser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it = new Intent(AddUserActivity.this, UserList.class);
+                startActivity(it);
+            }
+        });
 
 ImageView back  = (ImageView) findViewById(R.id.back);
 back.setOnClickListener(new View.OnClickListener() {

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/bg_screen1">
+    android:background="#274A86">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -14,27 +14,27 @@
 
         <com.airbnb.lottie.LottieAnimationView
             android:layout_width="250dp"
-            app:lottie_fileName="first.json"
+            app:lottie_fileName="3151-books.json"
             android:layout_height="250dp"
             android:foregroundGravity="center"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"/>
 
-        <TextView
+        <custom_font.MyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/slide_1_title"
+            android:text="Welcome to Bten"
             android:textColor="@android:color/white"
             android:textSize="@dimen/slide_title"
             android:textStyle="bold" />
 
-        <TextView
+        <custom_font.MyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:paddingLeft="@dimen/desc_padding"
             android:paddingRight="@dimen/desc_padding"
-            android:text="@string/slide_1_desc"
+            android:text="One application for Admin,lecturer/teacher and students"
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="@dimen/slide_desc" />

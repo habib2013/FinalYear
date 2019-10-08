@@ -143,6 +143,7 @@
         <ImageView
             android:layout_width="150dp"
             android:layout_height="50dp"
+            android:id="@+id/disableduser"
             android:src="@drawable/assigned" />
 
     </LinearLayout>
