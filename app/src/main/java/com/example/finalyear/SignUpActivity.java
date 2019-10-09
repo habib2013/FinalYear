@@ -79,6 +79,7 @@ public class SignUpActivity extends AppCompatActivity {
         final String username = editTextUsername.getText().toString().trim();
         final String email = editTextEmail.getText().toString().trim();
         final String password = editTextPassword.getText().toString().trim();
+        final String status = "disabled";
 
         final String gender = ((RadioButton) findViewById(radioGroupGender.getCheckedRadioButtonId())).getText().toString();
 
@@ -126,6 +127,7 @@ public class SignUpActivity extends AppCompatActivity {
                 params.put("email", email);
                 params.put("password", password);
                 params.put("gender", gender);
+                params.put("status", status);
 
                 //returing the response
                 return requestHandler.sendPostRequest(URLs.URL_REGISTER, params);
@@ -162,7 +164,8 @@ public class SignUpActivity extends AppCompatActivity {
                                 userJson.getInt("id"),
                                 userJson.getString("username"),
                                 userJson.getString("email"),
-                                userJson.getString("gender")
+                                userJson.getString("gender"),
+                                userJson.getString("status")
 
                         );
 

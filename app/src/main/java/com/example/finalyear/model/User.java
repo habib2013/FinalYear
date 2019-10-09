@@ -6,14 +6,15 @@ package com.example.finalyear.model;
 public class User {
 
     private int id;
-    private String username, email, gender;
+    private String username, email, gender,status;
 
-    public User(int id, String username, String email, String gender) {
+
+    public User(int id, String username, String email, String gender, String status) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.gender = gender;
-
+        this.status = status;
     }
 
     public int getId() {
@@ -32,5 +33,7 @@ public class User {
         return gender;
     }
 
-
+    public String getStatus() {
+        return status;
+    }
 }

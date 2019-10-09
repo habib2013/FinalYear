@@ -4,8 +4,8 @@ package com.example.finalyear;
 
 public class URLs {
 
-    private static final String ROOT_URL = "http://192.168.43.69/ams/Api.php?apicall=";
-    private static final String NEW_ROOT_URL = "http://192.168.43.69/ams/v1/Api.php?apicall=";
+    private static final String ROOT_URL = "http://192.168.137.1/ams/Api.php?apicall=";
+    private static final String NEW_ROOT_URL = "http://192.168.137.1/ams/v1/Api.php?apicall=";
 
 
     public static final String URL_REGISTER = ROOT_URL + "signup";

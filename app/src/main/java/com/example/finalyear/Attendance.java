@@ -15,9 +15,11 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
+import es.dmoral.toasty.Toasty;
+
 public class Attendance extends AppCompatActivity {
 
-String daters;
+Dialog daters;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +33,9 @@ String daters;
         });
 
         ImageView disableduser = (ImageView) findViewById(R.id.disableduser);
+
+
+
         disableduser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,16 +44,21 @@ String daters;
             }
         });
 
+
+
     }
 
     public void showDatePicker  (View v) {
         DialogFragment newFragment = new MyDatePickerFragment();
+
         newFragment.show(getSupportFragmentManager(), "date picker");
 
 
     }
 
     public static class MyDatePickerFragment extends DialogFragment {
+        String date;
+        TextView redate;
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
 
@@ -57,20 +67,27 @@ String daters;
             int month = c.get(Calendar.MONTH);
             int day = c.get(Calendar.DAY_OF_MONTH);
 
+
             return new DatePickerDialog(getActivity(), dateSetListener, year, month, day);
         }
 
-        private DatePickerDialog.OnDateSetListener dateSetListener =
-                new DatePickerDialog.OnDateSetListener() {
+        private DatePickerDialog.OnDateSetListener dateSetListener =  new DatePickerDialog.OnDateSetListener() {
                     public void onDateSet(DatePicker view, int year, int month, int day) {
-                        Toast.makeText(getActivity(), "selected date is " + view.getYear() +
+                        Toasty.success(getActivity(), "selected date is " + view.getYear() +
                                 " / " + (view.getMonth()+1) +
                                 " / " + view.getDayOfMonth(), Toast.LENGTH_SHORT).show();
 
+                        date = view.getYear() +
+                                " / " + (view.getMonth()+1) +
+                                " / " + view.getDayOfMonth();
 
                     }
+
                 };
 
+
     }
+
+
 
 }

@@ -79,6 +79,7 @@ public class HomeActivity extends AppCompatActivity
         font_Semibold =  Typeface.createFromAsset(HomeActivity.this.getAssets(),"fonts/Lato-Light.ttf");
 
       TextView  checker  = (TextView) findViewById(R.id.checker);
+      
       checker.setText(user.getGender());
 
         title = (TextView)findViewById(R.id.title);
@@ -97,6 +98,13 @@ if(ab.equals(checklecturer)){
     home.setTypeface(font_Semibold);
     home.setText("Helloboi");
 
+home.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent it  = new Intent(HomeActivity.this,EmptyActivity.class);
+        startActivity(it);
+    }
+});
 
 
     messages = (TextView)findViewById(R.id.messages);

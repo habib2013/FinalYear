@@ -28,17 +28,19 @@
             />
     </androidx.appcompat.widget.Toolbar>
 
+
     <RelativeLayout
         android:layout_below="@+id/toolbaruser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="605dp"
-            android:layout_marginTop="16dp"
+            android:layout_height="match_parent"
+
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="16dp"
+           >
 
 
             <LinearLayout
@@ -84,8 +86,6 @@
             </LinearLayout>
 
 
-
-
             <custom_font.MyEditText
                 android:id="@+id/editCoursename"
                 android:layout_width="match_parent"
@@ -122,7 +122,6 @@
                 />
 
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
@@ -152,25 +151,22 @@
                 />
 
 
-
-
-
             <LinearLayout
-                android:paddingTop="30dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                >
 
                 <custom_font.MyTextView
                     android:layout_width="wrap_content"
-                    android:layout_height="36dp"
-                    android:paddingTop="10dp"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
                     android:text="Department: "
                     android:textStyle="bold" />
 
                 <Spinner
                     android:id="@+id/department"
                     android:layout_width="299dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="30dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:entries="@array/teams"
@@ -185,12 +181,12 @@
                 <custom_font.MyTextView
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
+                    android:paddingTop="3dp"
                     android:text="Level: "
                     android:textStyle="bold" />
 
                 <Spinner
-                    android:id="@+id/levels"
+                    android:id="@+id/level"
                     android:layout_width="292dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -201,14 +197,17 @@
 
 
             <LinearLayout
-                android:paddingTop="30dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <custom_font.MyTextView
+                android:layout_height="wrap_content"
+                android:paddingTop="30dp">
+
+                <ListView
+                    android:scrollbarStyle="outsideInset"
+                    android:id="@+id/listViewcourse"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    />
+                    android:layout_height="70sp">
+
+                </ListView>
 
             </LinearLayout>
 
@@ -216,7 +215,8 @@
             <Button
                 android:id="@+id/addcourse"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
+                android:paddingTop="20dp"
                 android:layout_alignParentStart="true"
                 android:layout_marginTop="42dp"
                 android:background="@drawable/round"
@@ -225,7 +225,6 @@
                 android:text="Add new Course"
                 android:textColor="#CBD1DC"
                 android:textStyle="bold" />
-
 
 
         </LinearLayout>
@@ -245,4 +244,5 @@
 
 
     </RelativeLayout>
+
 </RelativeLayout>

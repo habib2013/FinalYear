@@ -37,6 +37,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import custom_font.MyTextView;
+import es.dmoral.toasty.Toasty;
 
 import static android.view.View.GONE;
 
@@ -102,7 +103,8 @@ public class LecturerList extends AppCompatActivity {
                     obj.getInt("id"),
                     obj.getString("username"),
                     obj.getString("email"),
-                    obj.getString("gender")
+                    obj.getString("gender"),
+                    obj.getString("status")
             ));
         }
 
@@ -135,7 +137,7 @@ public class LecturerList extends AppCompatActivity {
             try {
                 JSONObject object = new JSONObject(s);
                 if (!object.getBoolean("error")) {
-                    Toast.makeText(getApplicationContext(), object.getString("message"), Toast.LENGTH_SHORT).show();
+                    Toasty.success(getApplicationContext(), object.getString("message"), Toast.LENGTH_SHORT).show();
                     refreshHeroList(object.getJSONArray("users"));
                 }
             } catch (JSONException e) {

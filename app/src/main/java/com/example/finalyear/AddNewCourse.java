@@ -34,6 +34,8 @@ import java.util.HashMap;
 import java.util.List;
 import com.example.finalyear.URLs;
 import com.example.finalyear.lists.CourseList;
+import com.example.finalyear.model.Course;
+import com.google.android.material.checkbox.MaterialCheckBox;
 
 
 import custom_font.MyEditText;
@@ -47,17 +49,27 @@ public class AddNewCourse extends AppCompatActivity {
     private static final int CODE_POST_REQUEST = 1025;
 
     ProgressBar progressBar;
-
-
+    ListView listView;
+    List<Course> heroList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_course);
-         MyEditText coursename = (MyEditText) findViewById(R.id.editCoursename);
+
+        listView = (ListView) findViewById(R.id.listViewcourse);
+
+        heroList = new ArrayList<>();
+
+        readHeroes();
+
+
+        MyEditText coursename = (MyEditText) findViewById(R.id.editCoursename);
         MyEditText coursecode  = (MyEditText)  findViewById(R.id.editCoursecode);
         MyEditText coursestatus = (MyEditText) findViewById(R.id.editCoursestatus);
         Spinner department = (Spinner) findViewById(R.id.department);
+        Spinner level = (Spinner) findViewById(R.id.level);
+
     Button add = (Button) findViewById(R.id.addcourse);
 
 //        heroList = new Arra
@@ -73,7 +85,7 @@ public class AddNewCourse extends AppCompatActivity {
             }
         });
 
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+       // progressBar = (ProgressBar) findViewById(R.id.progressBar);
         ImageView back = (ImageView) findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,6 +105,10 @@ public class AddNewCourse extends AppCompatActivity {
                 String name = coursename.getText().toString().trim();
                 String code  = coursecode.getText().toString().trim();
                 String status = coursestatus.getText().toString().trim();
+                String deps =   department.getSelectedItem().toString();
+                String levs =   level.getSelectedItem().toString();
+                int lecturer_id = 4;
+
 
 
                 if (TextUtils.isEmpty(name)){
@@ -119,6 +135,11 @@ public class AddNewCourse extends AppCompatActivity {
                 params.put("code", name);
                 params.put("unit", code);
                 params.put("status", status);
+                params.put("department",deps);
+                params.put("level",levs);
+                params.put("lecturer_id",String.valueOf(lecturer_id));
+
+
 
                 PerformNetworkRequest request = new PerformNetworkRequest(URLs.URL_CREATE_COURSE, params, CODE_POST_REQUEST);
                 request.execute();
@@ -129,6 +150,33 @@ public class AddNewCourse extends AppCompatActivity {
     }
 
 
+    private void readHeroes() {
+        PerformNetworkRequest request = new PerformNetworkRequest(URLs.URL_READ_COURSE, null, CODE_GET_REQUEST);
+        request.execute();
+    }
+
+    private void refreshHeroList(JSONArray heroes) throws JSONException {
+        heroList.clear();
+
+        for (int i = 0; i < heroes.length(); i++) {
+            JSONObject obj = heroes.getJSONObject(i);
+
+            heroList.add(new Course(
+                    obj.getInt("id"),
+                    obj.getInt("lecturer_id"),
+                    obj.getString("code"),
+                    obj.getString("unit"),
+                    obj.getString("status"),
+                    obj.getString("department"),
+                    obj.getString("level")
+
+            ));
+        }
+
+        HeroAdapter adapter = new HeroAdapter(heroList);
+
+        listView.setAdapter(adapter);
+    }
 
 
     private class PerformNetworkRequest extends AsyncTask<Void, Void, String> {
@@ -145,18 +193,18 @@ public class AddNewCourse extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressBar.setVisibility(View.VISIBLE);
+         //   progressBar.setVisibility(View.VISIBLE);
         }
 
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            progressBar.setVisibility(GONE);
+           // progressBar.setVisibility(GONE);
             try {
                 JSONObject object = new JSONObject(s);
                 if (!object.getBoolean("error")) {
                     Toast.makeText(getApplicationContext(), object.getString("message"), Toast.LENGTH_SHORT).show();
-                    //refreshHeroList(object.getJSONArray("heroes"));
+                    refreshHeroList(object.getJSONArray("courses"));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -178,7 +226,33 @@ public class AddNewCourse extends AppCompatActivity {
         }
     }
 
+    class HeroAdapter extends ArrayAdapter<Course> {
+        List<Course> heroList;
 
+        public HeroAdapter(List<Course> heroList) {
+            super(AddNewCourse.this, R.layout.courses, heroList);
+            this.heroList = heroList;
+        }
+
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            LayoutInflater inflater = getLayoutInflater();
+            View listViewItem = inflater.inflate(R.layout.courses, null, true);
+
+            MyTextView textViewName = listViewItem.findViewById(R.id.coursename);
+            MaterialCheckBox checkcourse = (MaterialCheckBox) findViewById(R.id.checkcourse);
+
+
+            final Course hero = heroList.get(position);
+
+            textViewName.setText(hero.getCode());
+
+
+
+            return listViewItem;
+        }
+    }
     }
 
 

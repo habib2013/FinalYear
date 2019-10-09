@@ -59,6 +59,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:text="Date From "
+                    android:id="@+id/dateboy"
+                    android:textColor="#000000"
                     android:textStyle="bold"
                     android:textSize="20sp" />
 
@@ -119,7 +121,14 @@
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+        <TextView
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:text="datehere"
+            android:id="@+id/redate"
+            android:layout_below="@+id/dateto"
 
+            />
 
     </RelativeLayout>
 
@@ -145,6 +154,8 @@
             android:layout_height="50dp"
             android:id="@+id/disableduser"
             android:src="@drawable/assigned" />
+
+
 
     </LinearLayout>
 
