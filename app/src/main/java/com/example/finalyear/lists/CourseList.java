@@ -37,6 +37,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import custom_font.MyEditText;
 import custom_font.MyTextView;
 import es.dmoral.toasty.Toasty;
 
@@ -90,7 +91,7 @@ public class CourseList extends AppCompatActivity {
 
 
     private void deleteHero(int id) {
-        PerformNetworkRequest request = new PerformNetworkRequest(URLs.URL_DELETE_HERO + id, null, CODE_GET_REQUEST);
+        PerformNetworkRequest request = new PerformNetworkRequest(URLs.URL_DELETE_COURSE + id, null, CODE_GET_REQUEST);
         request.execute();
     }
 
@@ -177,11 +178,94 @@ public class CourseList extends AppCompatActivity {
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = getLayoutInflater();
             View listViewItem = inflater.inflate(R.layout.courselist, null, true);
+            final Course hero = heroList.get(position);
 
             MyTextView textViewName = listViewItem.findViewById(R.id.textViewName);
+            ImageView dels = listViewItem.findViewById(R.id.delete);
+            ImageView ups = listViewItem.findViewById(R.id.update);
+
+            dels.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(CourseList.this);
+
+                    builder.setTitle("Delete " + hero.getCode())
+                            .setMessage("Are you sure you want to delete it?")
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    deleteHero(hero.getId());
+                                }
+                            })
+                            .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+
+                }
+            });
+
+            ups.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    showUpdateDialog();
+                }
+
+                public View showUpdateDialog() {
+                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(CourseList.this);
+                    alertDialog.setIcon(R.drawable.clogo);
+                    alertDialog.setTitle("Update Course");
+                    alertDialog.setMessage("Your updates will be available on item refresh");
+
+                    LayoutInflater inflater = getLayoutInflater();
+                    View updatenow = inflater.inflate(R.layout.updatecourse, null, true);
+
+                    final MyEditText editCoursecode = (MyEditText) updatenow.findViewById(R.id.editCoursename);
+                    final MyEditText editCourseunit = (MyEditText) updatenow.findViewById(R.id.editCoursecode);
+                    final MyEditText editCoursestatus = (MyEditText) updatenow.findViewById(R.id.editCoursestatus);
+                    final Spinner department = (Spinner) updatenow.findViewById(R.id.department);
+                    final EditText editTextHeroId = (EditText) findViewById(R.id.editTextHeroId);
+
+                    int courseid = hero.getId();
+                    editCourseunit.setText(hero.getUnit());
+                    editCoursecode.setText(hero.getCode());
+                    editCoursestatus.setText(hero.getStatus());
 
 
-            final Course hero = heroList.get(position);
+
+                    department.setSelection(((ArrayAdapter<String>) department.getAdapter()).getPosition(hero.getDepartment()));
+
+//                    HashMap<String, String> params = new HashMap<>();
+//                    params.put("id", courseid);
+//                    params.put("name", name);
+//                    params.put("realname", realname);
+//                    params.put("rating", String.valueOf(rating));
+//                    params.put("teamaffiliation", team);
+//
+//
+//                    PerformNetworkRequest request = new PerformNetworkRequest(URLs.URL_UPDATE_HERO, params, CODE_POST_REQUEST);
+//                    request.execute();
+
+
+
+
+
+
+
+                    alertDialog.setView(updatenow);
+
+
+
+                    alertDialog.show();
+                    return updatenow;
+
+
+                }
+            });
+
 
             textViewName.setText(hero.getCode());
 

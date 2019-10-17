@@ -59,7 +59,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:text="Date From "
-                    android:id="@+id/dateboy"
+                    android:id="@+id/textView"
                     android:textColor="#000000"
                     android:textStyle="bold"
                     android:textSize="20sp" />
@@ -71,7 +71,7 @@
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="40dp"
-                        android:onClick="showDatePicker"
+                        android:id="@+id/button"
                         android:src="@drawable/calendar" />
                 </LinearLayout>
 
@@ -105,6 +105,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:text="Date to "
+                    android:id="@+id/anotherdate"
+                    android:textColor="#000000"
                     android:textStyle="bold"
                     android:textSize="20sp" />
 
@@ -115,20 +117,13 @@
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="40dp"
-                        android:onClick="showDatePicker"
+                        android:id="@+id/newbutton"
                         android:src="@drawable/calendar" />
                 </LinearLayout>
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-        <TextView
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:text="datehere"
-            android:id="@+id/redate"
-            android:layout_below="@+id/dateto"
 
-            />
 
     </RelativeLayout>
 

@@ -89,7 +89,7 @@ public class UserList extends AppCompatActivity {
 
 
     private void deleteHero(int id) {
-        PerformNetworkRequest request = new PerformNetworkRequest(URLs.URL_DELETE_HERO + id, null, CODE_GET_REQUEST);
+        PerformNetworkRequest request = new PerformNetworkRequest(URLs.URL_DELETE_COURSE + id, null, CODE_GET_REQUEST);
         request.execute();
     }
 

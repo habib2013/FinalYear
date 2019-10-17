@@ -13,17 +13,41 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
 import java.util.Calendar;
 
+import custom_font.MyTextView;
 import es.dmoral.toasty.Toasty;
 
-public class Attendance extends AppCompatActivity {
+public class Attendance extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
 Dialog daters;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendance);
+
+
+
+            ImageView button = (ImageView) findViewById(R.id.button);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    DialogFragment datePicker = new DatePickerFragment();
+                    datePicker.show(getSupportFragmentManager(), "date picker");
+                }
+            });
+
+            ImageView newbutton = (ImageView) findViewById(R.id.newbutton);
+            newbutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    DialogFragment datePicker = new NewDatePickerFragment();
+                    datePicker.show(getSupportFragmentManager(), "date picker");
+                }
+            });
+
+
         ImageView back  = (ImageView) findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,9 +57,6 @@ Dialog daters;
         });
 
         ImageView disableduser = (ImageView) findViewById(R.id.disableduser);
-
-
-
         disableduser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,46 +69,38 @@ Dialog daters;
 
     }
 
-    public void showDatePicker  (View v) {
-        DialogFragment newFragment = new MyDatePickerFragment();
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-        newFragment.show(getSupportFragmentManager(), "date picker");
+//        Calendar d = Calendar.getInstance();
+//        d.set(Calendar.YEAR, year);
+//        d.set(Calendar.MONTH, month);
+//        d.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+        String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+
+      int a =  view.getYear();
+       int b = view.getMonth();
+      int e =  view.getDayOfMonth();
+
+//        int f =  view.getYear();
+//        int g = view.getMonth();
+//        int h =  view.getDayOfMonth();
+
+      String shower = a + "/" + b + "/" + e;
+//        String newshower = f + "/" + g + "/" + h;
+
+MyTextView anotherdate = (MyTextView) findViewById(R.id.anotherdate);
 
 
-    }
-
-    public static class MyDatePickerFragment extends DialogFragment {
-        String date;
-        TextView redate;
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-
-            final Calendar c = Calendar.getInstance();
-            int year = c.get(Calendar.YEAR);
-            int month = c.get(Calendar.MONTH);
-            int day = c.get(Calendar.DAY_OF_MONTH);
-
-
-            return new DatePickerDialog(getActivity(), dateSetListener, year, month, day);
-        }
-
-        private DatePickerDialog.OnDateSetListener dateSetListener =  new DatePickerDialog.OnDateSetListener() {
-                    public void onDateSet(DatePicker view, int year, int month, int day) {
-                        Toasty.success(getActivity(), "selected date is " + view.getYear() +
-                                " / " + (view.getMonth()+1) +
-                                " / " + view.getDayOfMonth(), Toast.LENGTH_SHORT).show();
-
-                        date = view.getYear() +
-                                " / " + (view.getMonth()+1) +
-                                " / " + view.getDayOfMonth();
-
-                    }
-
-                };
+        MyTextView textView = (MyTextView) findViewById(R.id.textView);
+        textView.setText(shower);
+//       anotherdate.setText(newshower);
 
 
     }
-
-
-
 }

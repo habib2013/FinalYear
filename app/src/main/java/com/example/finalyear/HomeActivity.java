@@ -79,7 +79,10 @@ public class HomeActivity extends AppCompatActivity
         font_Semibold =  Typeface.createFromAsset(HomeActivity.this.getAssets(),"fonts/Lato-Light.ttf");
 
       TextView  checker  = (TextView) findViewById(R.id.checker);
-      
+      TextView recheck = (TextView) findViewById(R.id.recheck);
+
+      recheck.setText(user.getStatus());
+
       checker.setText(user.getGender());
 
         title = (TextView)findViewById(R.id.title);
@@ -87,10 +90,17 @@ public class HomeActivity extends AppCompatActivity
 
         title.setText(user.getUsername());
 
+
         String ab = (String) checker.getText();
+
+        String ac = (String) recheck.getText();
+
+
+
         String checklecturer = "Lecturer";
         String checkstudent = "Student";
         String checkadmin = "admin";
+        String mystatus = "disabled";
 
 
 if(ab.equals(checklecturer)){
@@ -98,14 +108,27 @@ if(ab.equals(checklecturer)){
     home.setTypeface(font_Semibold);
     home.setText("Helloboi");
 
-home.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        Intent it  = new Intent(HomeActivity.this,EmptyActivity.class);
-        startActivity(it);
-    }
-});
+if (ac.equals(mystatus)){
+    home.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent it = new Intent(HomeActivity.this, VerifyUser.class);
+            startActivity(it);
+        }
+    });
 
+
+
+}
+else {
+    home.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent it = new Intent(HomeActivity.this, EmptyActivity.class);
+            startActivity(it);
+        }
+    });
+}
 
     messages = (TextView)findViewById(R.id.messages);
     messages.setTypeface(font_Semibold);
@@ -223,16 +246,6 @@ logout.setOnClickListener(new View.OnClickListener() {
 
 
 
-
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -353,7 +366,7 @@ logout.setOnClickListener(new View.OnClickListener() {
         gohome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it = new Intent(HomeActivity.this,MainActivity.class);
+                Intent it = new Intent(HomeActivity.this,EmptyActivity.class);
                 startActivity(it);
             }
         });
