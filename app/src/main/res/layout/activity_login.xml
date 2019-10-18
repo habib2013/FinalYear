@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/zoologo"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="50dp"
         android:src="@drawable/course"
         android:layout_marginTop="30dp"/>
 
@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:textSize="30dp"
         android:text="bTen"
-        android:textColor="#2C3646"
+        android:textColor="#1345A5"
         android:gravity="center"
         android:layout_below="@+id/zoologo"
         android:textStyle="bold"
@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Sign in"
-        android:textColor="#00051f"
+        android:textColor="#1345A5"
         android:textSize="17dp"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
@@ -122,14 +122,14 @@
 
             android:layout_weight="1"
             android:text="Don't Have An Account ?"
-            android:textColor="#2C3646"
+            android:textColor="#1345A5"
             android:textSize="13dp" />
         <custom_font.MyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Forgot Password"
             android:textSize="13dp"
-            android:textColor="#2C3646"
+            android:textColor="#1345A5"
 
             />
     </LinearLayout>

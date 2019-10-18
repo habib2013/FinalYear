@@ -15,7 +15,8 @@
         android:roundIcon="@drawable/clogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".VerifyUser"></activity>
+        <activity android:name=".TakeAttendance"></activity>
+        <activity android:name=".VerifyUser" />
         <activity android:name=".lists.LecturerList" />
         <activity android:name=".lists.UserList" />
         <activity android:name=".lists.CourseList" />

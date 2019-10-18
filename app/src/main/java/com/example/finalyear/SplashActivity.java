@@ -36,11 +36,11 @@ public class SplashActivity extends Activity {
         appname.setTypeface(typeface);
 
         YoYo.with(Techniques.Bounce)
-                .duration(7000)
+                .duration(3000)
                 .playOn(findViewById(R.id.logo));
 
         YoYo.with(Techniques.FadeInUp)
-                .duration(5000)
+                .duration(3000)
                 .playOn(findViewById(R.id.appname));
 
         new Handler().postDelayed(new Runnable() {

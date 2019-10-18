@@ -8,7 +8,7 @@
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#2C3646"
+        android:background="#1345A5"
         android:id="@+id/toolbaruser"
         >
         <ImageView
@@ -70,7 +70,7 @@
                         android:layout_gravity="right"
                         android:gravity="end"
                         android:text="Lists"
-                        android:textColor="#2C3646"
+                        android:textColor="#1345A5"
                         android:textSize="16dp" />
 
                     <LinearLayout
@@ -169,7 +169,6 @@
                     android:layout_height="30dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
-                    android:entries="@array/teams"
                     android:paddingTop="5dp" />
             </LinearLayout>
 
@@ -191,24 +190,31 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
-                    android:entries="@array/teams"
+
                     android:paddingTop="5dp" />
             </LinearLayout>
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="378dp"
                 android:layout_height="wrap_content"
                 android:paddingTop="30dp">
 
-                <ListView
-                    android:scrollbarStyle="outsideInset"
-                    android:id="@+id/listViewcourse"
-                    android:layout_width="wrap_content"
-                    android:layout_height="70sp">
+                <custom_font.MyTextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="3dp"
+                    android:text="Lecturer: "
+                    android:textStyle="bold" />
 
-                </ListView>
+                <Spinner
+                    android:id="@+id/lecturer_id"
+                    android:layout_width="292dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
 
+                    android:paddingTop="5dp" />
             </LinearLayout>
 
 

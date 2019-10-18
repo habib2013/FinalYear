@@ -8,7 +8,7 @@
 <androidx.appcompat.widget.Toolbar
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#2C3646"
+    android:background="#1345A5"
     android:id="@+id/toolbaruser"
     >
     <ImageView
@@ -68,7 +68,7 @@
                     android:layout_gravity="right"
                     android:gravity="end"
                     android:text="Lists"
-                    android:textColor="#2C3646"
+                    android:textColor="#1345A5"
                     android:textSize="16dp" />
 
                 <LinearLayout

@@ -1,7 +1,6 @@
 package com.example.finalyear;
 
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -13,16 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.RatingBar;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
@@ -32,34 +27,35 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import com.example.finalyear.URLs;
+
 import com.example.finalyear.lists.CourseList;
 import com.example.finalyear.model.Course;
+import com.example.finalyear.model.User;
 import com.google.android.material.checkbox.MaterialCheckBox;
 
 
 import custom_font.MyEditText;
 import custom_font.MyTextView;
 
-import static android.view.View.GONE;
-
 public class AddNewCourse extends AppCompatActivity {
 
     private static final int CODE_GET_REQUEST = 1024;
     private static final int CODE_POST_REQUEST = 1025;
 
+    public static int getid ;
+
     ProgressBar progressBar;
     ListView listView;
-    List<Course> heroList;
+    List<User> heroList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_course);
 
-        listView = (ListView) findViewById(R.id.listViewcourse);
+       // listView = (ListView) findViewById(R.id.listViewcourse);
 
-        heroList = new ArrayList<>();
+        heroList = new ArrayList<User>();
 
         readHeroes();
 
@@ -107,7 +103,7 @@ public class AddNewCourse extends AppCompatActivity {
                 String status = coursestatus.getText().toString().trim();
                 String deps =   department.getSelectedItem().toString();
                 String levs =   level.getSelectedItem().toString();
-                int lecturer_id = 4;
+                int lecturer_id = getid;
 
 
 
@@ -150,10 +146,27 @@ public class AddNewCourse extends AppCompatActivity {
     }
 
 
+
+
+
     private void readHeroes() {
-        PerformNetworkRequest request = new PerformNetworkRequest(URLs.URL_READ_COURSE, null, CODE_GET_REQUEST);
+        PerformNetworkRequest request = new PerformNetworkRequest(URLs.URL_READ_LECTURER, null, CODE_GET_REQUEST);
         request.execute();
     }
+
+    private void readCourse() {
+        PerformNetworkRequest request = new PerformNetworkRequest(URLs.URL_READ_LECTURER, null, CODE_GET_REQUEST);
+        request.execute();
+    }
+
+
+
+
+    private void deleteHero(int id) {
+        PerformNetworkRequest request = new PerformNetworkRequest(URLs.URL_DELETE_COURSE + id, null, CODE_GET_REQUEST);
+        request.execute();
+    }
+
 
     private void refreshHeroList(JSONArray heroes) throws JSONException {
         heroList.clear();
@@ -161,15 +174,12 @@ public class AddNewCourse extends AppCompatActivity {
         for (int i = 0; i < heroes.length(); i++) {
             JSONObject obj = heroes.getJSONObject(i);
 
-            heroList.add(new Course(
+            heroList.add(new User(
                     obj.getInt("id"),
-                    obj.getInt("lecturer_id"),
-                    obj.getString("code"),
-                    obj.getString("unit"),
-                    obj.getString("status"),
-                    obj.getString("department"),
-                    obj.getString("level")
-
+                    obj.getString("username"),
+                    obj.getString("email"),
+                    obj.getString("gender"),
+                    obj.getString("status")
             ));
         }
 
@@ -177,6 +187,7 @@ public class AddNewCourse extends AppCompatActivity {
 
         listView.setAdapter(adapter);
     }
+
 
 
     private class PerformNetworkRequest extends AsyncTask<Void, Void, String> {
@@ -204,7 +215,7 @@ public class AddNewCourse extends AppCompatActivity {
                 JSONObject object = new JSONObject(s);
                 if (!object.getBoolean("error")) {
                     Toast.makeText(getApplicationContext(), object.getString("message"), Toast.LENGTH_SHORT).show();
-                    refreshHeroList(object.getJSONArray("courses"));
+                    refreshHeroList(object.getJSONArray("users"));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -226,10 +237,10 @@ public class AddNewCourse extends AppCompatActivity {
         }
     }
 
-    class HeroAdapter extends ArrayAdapter<Course> {
-        List<Course> heroList;
+    class HeroAdapter extends ArrayAdapter<User> {
+        List<User> heroList;
 
-        public HeroAdapter(List<Course> heroList) {
+        public HeroAdapter(List<User> heroList) {
             super(AddNewCourse.this, R.layout.courses, heroList);
             this.heroList = heroList;
         }
@@ -244,9 +255,12 @@ public class AddNewCourse extends AppCompatActivity {
             MaterialCheckBox checkcourse = (MaterialCheckBox) findViewById(R.id.checkcourse);
 
 
-            final Course hero = heroList.get(position);
+            final User hero = heroList.get(position);
 
-            textViewName.setText(hero.getCode());
+            textViewName.setText(hero.getUsername());
+
+            String getLecturers = (String) textViewName.getText();
+            getid = hero.getId();
 
 
 

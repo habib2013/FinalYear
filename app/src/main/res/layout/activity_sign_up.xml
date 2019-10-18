@@ -22,8 +22,8 @@
 
             <ImageView
                 android:id="@+id/zoologo"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@drawable/course" />
 
             <LinearLayout
@@ -42,7 +42,7 @@
                     android:layout_gravity="right"
                     android:gravity="end"
                     android:text="Signin"
-                    android:textColor="#2C3646"
+                    android:textColor="#1345A5"
                     android:textSize="16dp" />
 
                 <LinearLayout
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
             android:text="Create new account"
-            android:textColor="#00051f"
+            android:textColor="#1345A5"
             android:textSize="17dp"
 
             />
@@ -154,6 +154,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
+                android:textColor="#1345A5"
                 android:text="Student" />
 
 
@@ -161,6 +162,7 @@
                 android:id="@+id/radioButtonFemale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#1345A5"
                 android:text="Lecturer" />
 
         </RadioGroup>

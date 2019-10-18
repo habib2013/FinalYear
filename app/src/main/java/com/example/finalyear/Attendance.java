@@ -39,13 +39,6 @@ Dialog daters;
             });
 
             ImageView newbutton = (ImageView) findViewById(R.id.newbutton);
-            newbutton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    DialogFragment datePicker = new NewDatePickerFragment();
-                    datePicker.show(getSupportFragmentManager(), "date picker");
-                }
-            });
 
 
         ImageView back  = (ImageView) findViewById(R.id.back);
