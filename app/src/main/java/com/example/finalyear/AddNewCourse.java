@@ -28,6 +28,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.example.finalyear.lists.CourseList;
 import com.example.finalyear.model.Course;
 import com.example.finalyear.model.User;
@@ -48,6 +52,15 @@ public class AddNewCourse extends AppCompatActivity {
     ListView listView;
     List<User> heroList;
 
+    private List<String> devices;
+    private Spinner spinner;
+
+    private List<String> departments;
+    private Spinner spinnerDepartment;
+
+    private List<String> lecturers;
+    private Spinner spinnerLecturer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,16 +68,29 @@ public class AddNewCourse extends AppCompatActivity {
 
        // listView = (ListView) findViewById(R.id.listViewcourse);
 
+        devices = new ArrayList<>();
+        departments = new ArrayList<>();
+        lecturers = new ArrayList<>();
+
         heroList = new ArrayList<User>();
 
         readHeroes();
+        readLevel();
+            loadRegisteredDevices();
+
+        loadRegisteredDepartments();
+
+        loadRegisteredLecturers();
 
 
         MyEditText coursename = (MyEditText) findViewById(R.id.editCoursename);
         MyEditText coursecode  = (MyEditText)  findViewById(R.id.editCoursecode);
         MyEditText coursestatus = (MyEditText) findViewById(R.id.editCoursestatus);
-        Spinner department = (Spinner) findViewById(R.id.department);
-        Spinner level = (Spinner) findViewById(R.id.level);
+       // Spinner spinner = (Spinner) findViewById(R.id.level);
+        spinner = (Spinner) findViewById(R.id.level);
+        spinnerDepartment = (Spinner) findViewById(R.id.department);
+        spinnerLecturer = (Spinner) findViewById(R.id.lecturer_id);
+        //Spinner level = (Spinner) findViewById(R.id.level);
 
     Button add = (Button) findViewById(R.id.addcourse);
 
@@ -101,9 +127,8 @@ public class AddNewCourse extends AppCompatActivity {
                 String name = coursename.getText().toString().trim();
                 String code  = coursecode.getText().toString().trim();
                 String status = coursestatus.getText().toString().trim();
-                String deps =   department.getSelectedItem().toString();
-                String levs =   level.getSelectedItem().toString();
-                int lecturer_id = getid;
+              //  String levs=   level.getSelectedItem().toString();
+                //String levs =   level.getSelectedItem().toString();
 
 
 
@@ -131,9 +156,8 @@ public class AddNewCourse extends AppCompatActivity {
                 params.put("code", name);
                 params.put("unit", code);
                 params.put("status", status);
-                params.put("department",deps);
-                params.put("level",levs);
-                params.put("lecturer_id",String.valueOf(lecturer_id));
+
+
 
 
 
@@ -145,17 +169,150 @@ public class AddNewCourse extends AppCompatActivity {
 
     }
 
+    private void loadRegisteredLecturers() {
+        //        progressDialog = new ProgressDialog(this);
+//        progressDialog.setMessage("Fetching Devices...");
+//        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URLs.URL_READ_LECTURER,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        //  progressDialog.dismiss();
+                        JSONObject obj = null;
+                        try {
+                            obj = new JSONObject(response);
+                            if (!obj.getBoolean("error")) {
+                                JSONArray jsonDevices = obj.getJSONArray("users");
+
+                                for (int i = 0; i < jsonDevices.length(); i++) {
+                                    JSONObject d = jsonDevices.getJSONObject(i);
+                                    lecturers.add(d.getString("username"));
+                                }
+
+                                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                                        AddNewCourse.this,
+                                        android.R.layout.simple_spinner_dropdown_item,
+                                        lecturers);
+
+                                spinnerLecturer.setAdapter(arrayAdapter);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }) {
+
+        };
+        MyVolley.getInstance(this).addToRequestQueue(stringRequest);
 
 
 
+    }
+
+    private void loadRegisteredDepartments() {
+        //        progressDialog = new ProgressDialog(this);
+//        progressDialog.setMessage("Fetching Devices...");
+//        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URLs.URL_READ_DEPARTMENT,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        //  progressDialog.dismiss();
+                        JSONObject obj = null;
+                        try {
+                            obj = new JSONObject(response);
+                            if (!obj.getBoolean("error")) {
+                                JSONArray jsonDevices = obj.getJSONArray("users");
+
+                                for (int i = 0; i < jsonDevices.length(); i++) {
+                                    JSONObject d = jsonDevices.getJSONObject(i);
+                                    departments.add(d.getString("dept_name"));
+                                }
+
+                                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                                        AddNewCourse.this,
+                                        android.R.layout.simple_spinner_dropdown_item,
+                                        departments);
+
+                                spinnerDepartment.setAdapter(arrayAdapter);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }) {
+
+        };
+        MyVolley.getInstance(this).addToRequestQueue(stringRequest);
+
+
+    }
+
+    private void loadRegisteredDevices() {
+//        progressDialog = new ProgressDialog(this);
+//        progressDialog.setMessage("Fetching Devices...");
+//        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URLs.URL_READ_LEVEL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                      //  progressDialog.dismiss();
+                        JSONObject obj = null;
+                        try {
+                            obj = new JSONObject(response);
+                            if (!obj.getBoolean("error")) {
+                                JSONArray jsonDevices = obj.getJSONArray("users");
+
+                                for (int i = 0; i < jsonDevices.length(); i++) {
+                                    JSONObject d = jsonDevices.getJSONObject(i);
+                                    devices.add(d.getString("level_name"));
+                                }
+
+                                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                                        AddNewCourse.this,
+                                        android.R.layout.simple_spinner_dropdown_item,
+                                        devices);
+
+                                spinner.setAdapter(arrayAdapter);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }) {
+
+        };
+        MyVolley.getInstance(this).addToRequestQueue(stringRequest);
+    }
 
     private void readHeroes() {
         PerformNetworkRequest request = new PerformNetworkRequest(URLs.URL_READ_LECTURER, null, CODE_GET_REQUEST);
         request.execute();
     }
 
-    private void readCourse() {
-        PerformNetworkRequest request = new PerformNetworkRequest(URLs.URL_READ_LECTURER, null, CODE_GET_REQUEST);
+    private void readLevel() {
+        PerformNetworkRequest request = new PerformNetworkRequest(URLs.URL_READ_LEVEL, null, CODE_GET_REQUEST);
         request.execute();
     }
 
@@ -185,7 +342,7 @@ public class AddNewCourse extends AppCompatActivity {
 
         HeroAdapter adapter = new HeroAdapter(heroList);
 
-        listView.setAdapter(adapter);
+//        listView.setAdapter(adapter);
     }
 
 
@@ -217,6 +374,9 @@ public class AddNewCourse extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), object.getString("message"), Toast.LENGTH_SHORT).show();
                     refreshHeroList(object.getJSONArray("users"));
                 }
+
+
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }

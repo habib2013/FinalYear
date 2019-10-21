@@ -17,6 +17,11 @@ public class URLs {
 
     public static final String URL_READ_USER = NEW_ROOT_URL + "getUsers";
     public static final String URL_READ_LECTURER = NEW_ROOT_URL + "getLecturers";
+
+    public static final String URL_READ_LEVEL   = NEW_ROOT_URL + "getLevels";
+
+    public static final String URL_READ_DEPARTMENT  = NEW_ROOT_URL + "getDepartments";
+
     public static final String URL_READ_COURSE = NEW_ROOT_URL + "getCourses";
     public static final String URL_UPDATE_COURSE = NEW_ROOT_URL + "updateCourse";
 

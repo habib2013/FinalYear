@@ -71,10 +71,10 @@ public class IntroActivity extends AppCompatActivity {
         // fill list screen
 
         final List<ScreenItem> mList = new ArrayList<>();
-        mList.add(new ScreenItem("For Everyone","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, consectetur  consectetur adipiscing elit",R.drawable.gisting));
-        mList.add(new ScreenItem("Very Secured","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, consectetur  consectetur adipiscing elit",R.drawable.security));
-        mList.add(new ScreenItem("Easy Analysis","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, consectetur  consectetur adipiscing elit",R.drawable.analysing));
-        mList.add(new ScreenItem("Students Notification","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, consectetur  consectetur adipiscing elit",R.drawable.checkers));
+        mList.add(new ScreenItem("For Everyone","BTEN attendance system is available for administrator,lecturers and students",R.drawable.gisting));
+        mList.add(new ScreenItem("Very Secured","Data saved on BTEN application is secured with 256 bit encryption",R.drawable.security));
+        mList.add(new ScreenItem("Easy Analysis","We help you get digitized with easy analysis.Let go off the old method of attendance system",R.drawable.analysing));
+        mList.add(new ScreenItem("Students Notification","Students get notified once their attendance is taken",R.drawable.checkers));
 
         // setup viewpager
         screenPager =findViewById(R.id.screen_viewpager);
