@@ -1,11 +1,9 @@
 package com.example.finalyear.lists;
 
 
-import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,15 +15,13 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.finalyear.R;
-import com.example.finalyear.RequestHandler;
-import com.example.finalyear.URLs;
+import com.example.finalyear.database.RequestHandler;
+import com.example.finalyear.database.URLs;
 import com.example.finalyear.model.User;
 
 import org.json.JSONArray;
@@ -38,8 +34,6 @@ import java.util.List;
 
 import custom_font.MyTextView;
 import es.dmoral.toasty.Toasty;
-
-import static android.view.View.GONE;
 
 public class LecturerList extends AppCompatActivity {
 

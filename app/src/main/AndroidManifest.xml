@@ -15,16 +15,19 @@
         android:roundIcon="@drawable/clogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TakeAttendance"></activity>
+        <activity android:name=".profiles.AdminProfile"></activity>
+        <activity android:name=".profiles.LecturerProfile" />
+        <activity android:name=".profiles.UserProfile" />
+        <activity android:name=".TakeAttendance" />
         <activity android:name=".VerifyUser" />
         <activity android:name=".lists.LecturerList" />
         <activity android:name=".lists.UserList" />
         <activity android:name=".lists.CourseList" />
         <activity android:name=".Attendance" />
-        <activity android:name=".AddNewCourse" />
-        <activity android:name=".AddNewLecturer" />
+        <activity android:name=".Adders.AddNewCourse" />
+        <activity android:name=".Adders.AddNewLecturer" />
         <activity android:name=".ShowShimmer" />
-        <activity android:name=".AddUserActivity" />
+        <activity android:name=".Adders.AddUserActivity" />
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"

@@ -1,4 +1,4 @@
-package com.example.finalyear;
+package com.example.finalyear.database;
 
 
 

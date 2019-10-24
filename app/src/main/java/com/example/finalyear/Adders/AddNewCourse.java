@@ -1,4 +1,4 @@
-package com.example.finalyear;
+package com.example.finalyear.Adders;
 
 
 import android.content.Intent;
@@ -32,14 +32,19 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.finalyear.database.MyVolley;
+import com.example.finalyear.R;
+import com.example.finalyear.database.RequestHandler;
+import com.example.finalyear.database.URLs;
 import com.example.finalyear.lists.CourseList;
-import com.example.finalyear.model.Course;
 import com.example.finalyear.model.User;
 import com.google.android.material.checkbox.MaterialCheckBox;
 
 
 import custom_font.MyEditText;
 import custom_font.MyTextView;
+
+import static android.view.View.GONE;
 
 public class AddNewCourse extends AppCompatActivity {
 
@@ -74,8 +79,8 @@ public class AddNewCourse extends AppCompatActivity {
 
         heroList = new ArrayList<User>();
 
-        readHeroes();
-        readLevel();
+//        readHeroes();
+//        readLevel();
             loadRegisteredDevices();
 
         loadRegisteredDepartments();
@@ -86,11 +91,11 @@ public class AddNewCourse extends AppCompatActivity {
         MyEditText coursename = (MyEditText) findViewById(R.id.editCoursename);
         MyEditText coursecode  = (MyEditText)  findViewById(R.id.editCoursecode);
         MyEditText coursestatus = (MyEditText) findViewById(R.id.editCoursestatus);
-       // Spinner spinner = (Spinner) findViewById(R.id.level);
+
         spinner = (Spinner) findViewById(R.id.level);
         spinnerDepartment = (Spinner) findViewById(R.id.department);
         spinnerLecturer = (Spinner) findViewById(R.id.lecturer_id);
-        //Spinner level = (Spinner) findViewById(R.id.level);
+
 
     Button add = (Button) findViewById(R.id.addcourse);
 
@@ -127,8 +132,9 @@ public class AddNewCourse extends AppCompatActivity {
                 String name = coursename.getText().toString().trim();
                 String code  = coursecode.getText().toString().trim();
                 String status = coursestatus.getText().toString().trim();
-              //  String levs=   level.getSelectedItem().toString();
-                //String levs =   level.getSelectedItem().toString();
+               String level =   spinner.getSelectedItem().toString();
+                String department =   spinnerDepartment.getSelectedItem().toString();
+                String lecturer =   spinnerLecturer.getSelectedItem().toString();
 
 
 
@@ -156,10 +162,9 @@ public class AddNewCourse extends AppCompatActivity {
                 params.put("code", name);
                 params.put("unit", code);
                 params.put("status", status);
-
-
-
-
+                params.put("department", department);
+                params.put("level", level);
+                params.put("lecturer_id", lecturer);
 
                 PerformNetworkRequest request = new PerformNetworkRequest(URLs.URL_CREATE_COURSE, params, CODE_POST_REQUEST);
                 request.execute();
@@ -306,45 +311,6 @@ public class AddNewCourse extends AppCompatActivity {
         MyVolley.getInstance(this).addToRequestQueue(stringRequest);
     }
 
-    private void readHeroes() {
-        PerformNetworkRequest request = new PerformNetworkRequest(URLs.URL_READ_LECTURER, null, CODE_GET_REQUEST);
-        request.execute();
-    }
-
-    private void readLevel() {
-        PerformNetworkRequest request = new PerformNetworkRequest(URLs.URL_READ_LEVEL, null, CODE_GET_REQUEST);
-        request.execute();
-    }
-
-
-
-
-    private void deleteHero(int id) {
-        PerformNetworkRequest request = new PerformNetworkRequest(URLs.URL_DELETE_COURSE + id, null, CODE_GET_REQUEST);
-        request.execute();
-    }
-
-
-    private void refreshHeroList(JSONArray heroes) throws JSONException {
-        heroList.clear();
-
-        for (int i = 0; i < heroes.length(); i++) {
-            JSONObject obj = heroes.getJSONObject(i);
-
-            heroList.add(new User(
-                    obj.getInt("id"),
-                    obj.getString("username"),
-                    obj.getString("email"),
-                    obj.getString("gender"),
-                    obj.getString("status")
-            ));
-        }
-
-        HeroAdapter adapter = new HeroAdapter(heroList);
-
-//        listView.setAdapter(adapter);
-    }
-
 
 
     private class PerformNetworkRequest extends AsyncTask<Void, Void, String> {
@@ -361,22 +327,19 @@ public class AddNewCourse extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-         //   progressBar.setVisibility(View.VISIBLE);
+           // progressBar.setVisibility(View.VISIBLE);
         }
 
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-           // progressBar.setVisibility(GONE);
+        //    progressBar.setVisibility(GONE);
             try {
                 JSONObject object = new JSONObject(s);
                 if (!object.getBoolean("error")) {
                     Toast.makeText(getApplicationContext(), object.getString("message"), Toast.LENGTH_SHORT).show();
-                    refreshHeroList(object.getJSONArray("users"));
+                    //refreshHeroList(object.getJSONArray("heroes"));
                 }
-
-
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -397,36 +360,9 @@ public class AddNewCourse extends AppCompatActivity {
         }
     }
 
-    class HeroAdapter extends ArrayAdapter<User> {
-        List<User> heroList;
-
-        public HeroAdapter(List<User> heroList) {
-            super(AddNewCourse.this, R.layout.courses, heroList);
-            this.heroList = heroList;
-        }
-
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            LayoutInflater inflater = getLayoutInflater();
-            View listViewItem = inflater.inflate(R.layout.courses, null, true);
-
-            MyTextView textViewName = listViewItem.findViewById(R.id.coursename);
-            MaterialCheckBox checkcourse = (MaterialCheckBox) findViewById(R.id.checkcourse);
-
-
-            final User hero = heroList.get(position);
-
-            textViewName.setText(hero.getUsername());
-
-            String getLecturers = (String) textViewName.getText();
-            getid = hero.getId();
 
 
 
-            return listViewItem;
-        }
-    }
     }
 
 

@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,17 +16,21 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.example.finalyear.Adders.AddNewCourse;
 import com.example.finalyear.R;
-import com.example.finalyear.RequestHandler;
-import com.example.finalyear.URLs;
+import com.example.finalyear.database.MyVolley;
+import com.example.finalyear.database.RequestHandler;
+import com.example.finalyear.database.URLs;
 import com.example.finalyear.model.Course;
-import com.example.finalyear.model.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,8 +43,6 @@ import java.util.List;
 import custom_font.MyEditText;
 import custom_font.MyTextView;
 import es.dmoral.toasty.Toasty;
-
-import static android.view.View.GONE;
 
 public class CourseList extends AppCompatActivity {
 
@@ -57,12 +58,25 @@ public class CourseList extends AppCompatActivity {
 
     List<Course> heroList;
 
+    private List<String> devices;
+    private Spinner spinner;
+
+    private List<String> departments;
+    private Spinner spinnerDepartment;
+
+    private List<String> lecturers;
+    private Spinner spinnerLecturer;
+
     boolean isUpdating = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_list);
+
+        devices = new ArrayList<>();
+        departments = new ArrayList<>();
+        lecturers = new ArrayList<>();
 
 
         listView = (ListView) findViewById(R.id.listViewHeroes);
@@ -71,6 +85,12 @@ public class CourseList extends AppCompatActivity {
 
 
         readHeroes();
+        //loadRegisteredDevices();
+
+      //  loadRegisteredDepartments();
+
+//        loadRegisteredLecturers();
+
 
         ImageView back  = (ImageView) findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +101,144 @@ public class CourseList extends AppCompatActivity {
         });
 
     }
+
+//    private void loadRegisteredLecturers() {
+//        //        progressDialog = new ProgressDialog(this);
+////        progressDialog.setMessage("Fetching Devices...");
+////        progressDialog.show();
+//
+//        StringRequest stringRequest = new StringRequest(Request.Method.GET, URLs.URL_READ_LECTURER,
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                        //  progressDialog.dismiss();
+//                        JSONObject obj = null;
+//                        try {
+//                            obj = new JSONObject(response);
+//                            if (!obj.getBoolean("error")) {
+//                                JSONArray jsonDevices = obj.getJSONArray("users");
+//
+//                                for (int i = 0; i < jsonDevices.length(); i++) {
+//                                    JSONObject d = jsonDevices.getJSONObject(i);
+//                                    lecturers.add(d.getString("username"));
+//                                }
+//
+//                                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+//                                        CourseList.this,
+//                                        android.R.layout.simple_spinner_dropdown_item,
+//                                        lecturers);
+//
+//                                spinnerLecturer.setAdapter(arrayAdapter);
+//                            }
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//
+//                    }
+//                }) {
+//
+//        };
+//        MyVolley.getInstance(this).addToRequestQueue(stringRequest);
+//
+//
+//
+//    }
+
+//    private void loadRegisteredDepartments() {
+//        //        progressDialog = new ProgressDialog(this);
+////        progressDialog.setMessage("Fetching Devices...");
+////        progressDialog.show();
+//
+//        StringRequest stringRequest = new StringRequest(Request.Method.GET, URLs.URL_READ_DEPARTMENT,
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                        //  progressDialog.dismiss();
+//                        JSONObject obj = null;
+//                        try {
+//                            obj = new JSONObject(response);
+//                            if (!obj.getBoolean("error")) {
+//                                JSONArray jsonDevices = obj.getJSONArray("users");
+//
+//                                for (int i = 0; i < jsonDevices.length(); i++) {
+//                                    JSONObject d = jsonDevices.getJSONObject(i);
+//                                    departments.add(d.getString("dept_name"));
+//                                }
+//
+//                                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+//                                        CourseList.this,
+//                                        android.R.layout.simple_spinner_dropdown_item,
+//                                        departments);
+//
+//                                spinnerDepartment.setAdapter(arrayAdapter);
+//                            }
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//
+//                    }
+//                }) {
+//
+//        };
+//        MyVolley.getInstance(this).addToRequestQueue(stringRequest);
+//
+//
+//    }
+
+//    private void loadRegisteredDevices() {
+////        progressDialog = new ProgressDialog(this);
+////        progressDialog.setMessage("Fetching Devices...");
+////        progressDialog.show();
+//
+//        StringRequest stringRequest = new StringRequest(Request.Method.GET, URLs.URL_READ_LEVEL,
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//                        //  progressDialog.dismiss();
+//                        JSONObject obj = null;
+//                        try {
+//                            obj = new JSONObject(response);
+//                            if (!obj.getBoolean("error")) {
+//                                JSONArray jsonDevices = obj.getJSONArray("users");
+//
+//                                for (int i = 0; i < jsonDevices.length(); i++) {
+//                                    JSONObject d = jsonDevices.getJSONObject(i);
+//                                    devices.add(d.getString("level_name"));
+//                                }
+//
+//                                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+//                                        CourseList.this,
+//                                        android.R.layout.simple_spinner_dropdown_item,
+//                                        devices);
+//
+//                                spinner.setAdapter(arrayAdapter);
+//                            }
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                },
+//                new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//
+//                    }
+//                }) {
+//
+//        };
+//        MyVolley.getInstance(this).addToRequestQueue(stringRequest);
+//    }
+
 
 
     private void readHeroes() {
@@ -226,17 +384,13 @@ public class CourseList extends AppCompatActivity {
                     final MyEditText editCoursecode = (MyEditText) updatenow.findViewById(R.id.editCoursename);
                     final MyEditText editCourseunit = (MyEditText) updatenow.findViewById(R.id.editCoursecode);
                     final MyEditText editCoursestatus = (MyEditText) updatenow.findViewById(R.id.editCoursestatus);
-                    final Spinner department = (Spinner) updatenow.findViewById(R.id.department);
-                    final EditText editTextHeroId = (EditText) findViewById(R.id.editTextHeroId);
+
+//                    spinner = (Spinner) updatenow.findViewById(R.id.level);
+//                    spinnerDepartment = (Spinner) updatenow.findViewById(R.id.department);
+                    spinnerLecturer = (Spinner) updatenow.findViewById(R.id.lecturer_id);
 
                     int courseid = hero.getId();
-                    editCourseunit.setText(hero.getUnit());
-                    editCoursecode.setText(hero.getCode());
-                    editCoursestatus.setText(hero.getStatus());
 
-
-
-                    department.setSelection(((ArrayAdapter<String>) department.getAdapter()).getPosition(hero.getDepartment()));
 
 //                    HashMap<String, String> params = new HashMap<>();
 //                    params.put("id", courseid);

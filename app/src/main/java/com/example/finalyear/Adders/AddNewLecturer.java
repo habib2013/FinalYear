@@ -1,4 +1,4 @@
-package com.example.finalyear;
+package com.example.finalyear.Adders;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.finalyear.R;
+import com.example.finalyear.database.RequestHandler;
+import com.example.finalyear.database.URLs;
 import com.example.finalyear.lists.LecturerList;
 
 import org.json.JSONException;

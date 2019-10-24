@@ -2,10 +2,10 @@ package com.example.finalyear;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.finalyear.database.SharedPrefManager;
 import com.example.finalyear.model.User;
 
 public class EmptyActivity extends AppCompatActivity {

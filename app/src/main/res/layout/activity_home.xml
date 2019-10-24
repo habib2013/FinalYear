@@ -36,6 +36,8 @@
                android:id="@+id/logot"
                 android:src="@drawable/logout"/>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -72,7 +74,7 @@
                             android:paddingLeft="16dp"
                             android:paddingTop="20dp"
                             android:textStyle="bold"
-                            android:textColor="@color/colortext"
+                            android:textColor="#1345A5"
                             android:letterSpacing="0.025"/>
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -83,7 +85,7 @@
                                 android:text="student"
                                 android:layout_width="120dp"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/colortext"
+                                android:textColor="#1345A5"
 
                                 android:letterSpacing="0.025"/>
                             <TextView
@@ -91,7 +93,7 @@
                                 android:text="status"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/colortext"
+                                android:textColor="#1345A5"
 
                                 android:letterSpacing="0.025"/>
                         </LinearLayout>

@@ -1,9 +1,8 @@
-package com.example.finalyear;
+package com.example.finalyear.Adders;
 
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.finalyear.R;
 import com.example.finalyear.lists.UserList;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;

@@ -100,18 +100,17 @@
 
                 <Spinner
                     android:id="@+id/department"
-                    android:layout_width="299dp"
-                    android:layout_height="30dp"
+                    android:layout_width="290dp"
+
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
-                    android:entries="@array/teams"
-                    android:paddingTop="5dp" />
+                    android:paddingTop="5dp"></Spinner>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="378dp"
-                android:layout_height="wrap_content"
-                android:paddingTop="30dp">
+                android:layout_width="373dp"
+                android:layout_height="wrap_content">
 
                 <custom_font.MyTextView
                     android:layout_width="80dp"
@@ -120,15 +119,40 @@
                     android:text="Level: "
                     android:textStyle="bold" />
 
+
                 <Spinner
                     android:id="@+id/level"
-                    android:layout_width="292dp"
+                    android:layout_width="match_parent"
+
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
-                    android:entries="@array/teams"
-                    android:paddingTop="5dp" />
+                    android:paddingTop="5dp"></Spinner>
             </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+
+                <custom_font.MyTextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="3dp"
+                    android:text="Lecturer: "
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/lecturer_id"
+                    android:layout_width="293dp"
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:paddingTop="5dp"></Spinner>
+            </LinearLayout>
+
 
 
 

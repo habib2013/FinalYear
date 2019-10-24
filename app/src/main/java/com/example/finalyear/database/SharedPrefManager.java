@@ -1,9 +1,10 @@
-package com.example.finalyear;
+package com.example.finalyear.database;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+import com.example.finalyear.LoginActivity;
 import com.example.finalyear.model.User;
 
 /**

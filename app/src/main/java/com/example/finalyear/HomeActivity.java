@@ -3,13 +3,21 @@ package com.example.finalyear;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.media.Image;
 import android.os.Bundle;
 
+import com.example.finalyear.Adders.AddNewCourse;
+import com.example.finalyear.Adders.AddNewLecturer;
+import com.example.finalyear.Adders.AddUserActivity;
+import com.example.finalyear.database.PrefManager;
+import com.example.finalyear.database.SharedPrefManager;
+import com.example.finalyear.database.UserSession;
 import com.example.finalyear.model.User;
+import com.example.finalyear.profiles.AdminProfile;
+import com.example.finalyear.profiles.LecturerProfile;
+import com.example.finalyear.profiles.UserProfile;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import android.view.View;
 
@@ -27,8 +35,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +51,11 @@ public class HomeActivity extends AppCompatActivity
         TextView sign,title,home,messages,circle_count,friends,shop,favourites;
     private UserSession session;
     private PrefManager prefManager;
+
+    ImageView bgapp, clover;
+    LinearLayout textsplash, texthome, menus;
+    Animation frombottom;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +116,27 @@ public class HomeActivity extends AppCompatActivity
         String checkstudent = "Student";
         String checkadmin = "admin";
         String mystatus = "disabled";
+
+
+        ImageView view_profile = (ImageView) findViewById(R.id.view_profile);
+        view_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(ab.equals(checklecturer)){
+                    Intent it = new Intent(HomeActivity.this, LecturerProfile.class);
+                }
+                if(ab.equals(checkstudent)){
+                    Intent it = new Intent(HomeActivity.this, UserProfile.class);
+                }
+                if(ab.equals(checkadmin)){
+                    Intent it = new Intent(HomeActivity.this, AdminProfile.class);
+                }
+
+
+
+            }
+        });
+
 
 
 if(ab.equals(checklecturer)){
@@ -180,7 +216,7 @@ else {
             home.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent it  = new Intent(HomeActivity.this,AddUserActivity.class);
+                    Intent it  = new Intent(HomeActivity.this, AddUserActivity.class);
                     startActivity(it);
                 }
             });
@@ -194,7 +230,7 @@ else {
             messages.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent it  = new Intent(HomeActivity.this,AddNewLecturer.class);
+                    Intent it  = new Intent(HomeActivity.this, AddNewLecturer.class);
                     startActivity(it);
                 }
             });
@@ -206,7 +242,7 @@ else {
                 friends.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent it  = new Intent(HomeActivity.this,AddNewCourse.class);
+                        Intent it  = new Intent(HomeActivity.this, AddNewCourse.class);
                         startActivity(it);
                     }
                 });
