@@ -45,5 +45,168 @@
         </activity>
         <activity android:name=".IntroActivity" />
     </application>
+    
+    
+    
+    
+    "Response": {
+        "ResponseCode": "200",
+        "Message": "Transactions Retrieved successfully"
+    },
+    "Data": {
+        "Transactions": [
+            {
+                "Amount": 15.00,
+                "Currency": "NGN",
+                "Category": "Bank Transfer Charges",
+                "Narration": "Transaction charge for bank transfer",
+                "DateTransacted": "2/8/2021 8:54:21 PM",
+                "PreviousBalance": 150.00,
+                "NewBalance": 135.00,
+                "Type": "Debit"
+            },
+            {
+                "Amount": 10.00,
+                "Currency": "NGN",
+                "Category": "Bank Transfer",
+                "Narration": "Sent money to Azamosa Victor's bank account for \"Account credited by MPAY \".",
+                "DateTransacted": "2/8/2021 8:53:59 PM",
+                "PreviousBalance": 160.00,
+                "NewBalance": 150.00,
+                "Type": "Debit"
+            },
+            {
+                "Amount": 15.00,
+                "Currency": "NGN",
+                "Category": "Bank Transfer Charges",
+                "Narration": "Transaction charge for bank transfer",
+                "DateTransacted": "2/8/2021 8:52:51 PM",
+                "PreviousBalance": 175.00,
+                "NewBalance": 160.00,
+                "Type": "Debit"
+            },
+            {
+                "Amount": 10.00,
+                "Currency": "NGN",
+                "Category": "Bank Transfer",
+                "Narration": "Sent money to Azamosa Victor's bank account for \"Account credited by MPAY \".",
+                "DateTransacted": "2/8/2021 8:52:24 PM",
+                "PreviousBalance": 185.00,
+                "NewBalance": 175.00,
+                "Type": "Debit"
+            },
+            {
+                "Amount": 15.00,
+                "Currency": "NGN",
+                "Category": "Bank Transfer Charges",
+                "Narration": "Transaction charge for bank transfer",
+                "DateTransacted": "2/8/2021 8:51:52 PM",
+                "PreviousBalance": 200.00,
+                "NewBalance": 185.00,
+                "Type": "Debit"
+            },
+            {
+                "Amount": 10.00,
+                "Currency": "NGN",
+                "Category": "Bank Transfer",
+                "Narration": "Sent money to Azamosa Victor's bank account for \"Account credited by MPAY \".",
+                "DateTransacted": "2/8/2021 8:51:22 PM",
+                "PreviousBalance": 210.00,
+                "NewBalance": 200.00,
+                "Type": "Debit"
+            },
+            {
+                "Amount": 15.00,
+                "Currency": "NGN",
+                "Category": "Bank Transfer Charges",
+                "Narration": "Transaction charge for bank transfer",
+                "DateTransacted": "2/8/2021 8:45:33 PM",
+                "PreviousBalance": 225.00,
+                "NewBalance": 210.00,
+                "Type": "Debit"
+            },
+            {
+                "Amount": 10.00,
+                "Currency": "NGN",
+                "Category": "Bank Transfer",
+                "Narration": "Sent money to Azamosa Victor's bank account for \"Account credited by MPAY \".",
+                "DateTransacted": "2/8/2021 8:45:15 PM",
+                "PreviousBalance": 235.00,
+                "NewBalance": 225.00,
+                "Type": "Debit"
+            },
+            {
+                "Amount": 20.00,
+                "Currency": "NGN",
+                "Category": "Bank Transfer",
+                "Narration": "Sent money to Azamosa Victor's bank account for \"Account credited by MPAY \".",
+                "DateTransacted": "2/8/2021 8:45:02 PM",
+                "PreviousBalance": 255.00,
+                "NewBalance": 235.00,
+                "Type": "Debit"
+            },
+            {
+                "Amount": 15.00,
+                "Currency": "NGN",
+                "Category": "Bank Transfer Charges",
+                "Narration": "Transaction charge for bank transfer",
+                "DateTransacted": "2/8/2021 8:40:32 PM",
+                "PreviousBalance": 270.00,
+                "NewBalance": 255.00,
+                "Type": "Debit"
+            },
+            {
+                "Amount": 50.00,
+                "Currency": "NGN",
+                "Category": "Bank Transfer",
+                "Narration": "Sent money to Azamosa Victor's bank account for \"Account credited by MPAY \".",
+                "DateTransacted": "2/8/2021 8:40:12 PM",
+                "PreviousBalance": 320.00,
+                "NewBalance": 270.00,
+                "Type": "Debit"
+            },
+            {
+                "Amount": 50.00,
+                "Currency": "NGN",
+                "Category": "Bank Transfer",
+                "Narration": "Sent money to Azamosa Victor's bank account for \"Account credited by MPAY \".",
+                "DateTransacted": "2/8/2021 8:39:41 PM",
+                "PreviousBalance": 370.00,
+                "NewBalance": 320.00,
+                "Type": "Debit"
+            },
+            {
+                "Amount": 15.00,
+                "Currency": "NGN",
+                "Category": "Bank Transfer Charges",
+                "Narration": "Transaction charge for bank transfer",
+                "DateTransacted": "2/8/2021 8:39:17 PM",
+                "PreviousBalance": 385.00,
+                "NewBalance": 370.00,
+                "Type": "Debit"
+            },
+            {
+                "Amount": 50.00,
+                "Currency": "NGN",
+                "Category": "Bank Transfer",
+                "Narration": "Sent money to Azamosa Victor's bank account for \"Account credited by MPAY \".",
+                "DateTransacted": "2/8/2021 8:38:58 PM",
+                "PreviousBalance": 435.00,
+                "NewBalance": 385.00,
+                "Type": "Debit"
+            },
+            {
+                "Amount": 15.00,
+                "Currency": "NGN",
+                "Category": "Bank Transfer Charges",
+                "Narration": "Transaction charge for bank transfer",
+                "DateTransacted": "2/8/2021 8:35:48 PM",
+                "PreviousBalance": 450.00,
+                "NewBalance": 435.00,
+                "Type": "Debit"
+            }
+        ]
+    }
+}
 
 </manifest>
